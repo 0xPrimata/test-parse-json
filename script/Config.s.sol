@@ -55,14 +55,14 @@ contract ConfigScript is Script {
         string memory path = string.concat(vm.projectRoot(), "/script/config2.json");
         string memory json = vm.readFile(path);
         bytes memory rawConfigData = json.parseRaw(string(abi.encodePacked(".")));
-        config = abi.decode(rawConfigData, (ConfigData));
-        if (config.labsSigners[0] == ZERO) {
-            console.log("labsSigner", config.labsSigners[0]);
-            config.labsSigners[0] = vm.addr(1);
+        config2 = abi.decode(rawConfigData, (ConfigData2));
+        if (config2.labsSigners[0] == ZERO) {
+            console.log("labsSigner", config2.labsSigners[0]);
+            config2.labsSigners[0] = vm.addr(1);
         }
-        if (config.foundationSigners[0] == ZERO) {
-            console.log("foundationSigner", config.foundationSigners[0]);
-            config.foundationSigners[0] = vm.addr(1);
+        if (config2.foundationSigners[0] == ZERO) {
+            console.log("foundationSigner", config2.foundationSigners[0]);
+            config2.foundationSigners[0] = vm.addr(1);
         }
     }
 }
